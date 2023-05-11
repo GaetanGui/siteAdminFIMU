@@ -260,10 +260,14 @@ export default {
         this.menuData[7].selected = true;
       } else if (this.$route.path.includes('/stand')) {
         this.menuData[8].selected = true;
-      } else if (this.$route.path.includes('/service')) {
+      } else if (this.$route.path.includes('/typestand')) {
         this.menuData[9].selected = true;
-      } else if (this.$route.path.includes('/utilisateur')) {
+      } else if (this.$route.path.includes('/service')) {
         this.menuData[10].selected = true;
+      }else if (this.$route.path.includes('/utilisateur')) {
+        this.menuData[11].selected = true;
+      }else if (this.$route.path.includes('/parser')) {
+        this.menuData[12].selected = true;
       }
     },
 
