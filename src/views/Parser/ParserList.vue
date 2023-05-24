@@ -1,20 +1,20 @@
 <template>
   <v-container>
     <v-row>
-<!--      <v-col-->
-<!--          v-for="(file, titleIndex) in Object.keys(files)"-->
-<!--          :key="titleIndex" cols="4"-->
-<!--      >-->
-<!--        <ImportComponent-->
-<!--            v-model="files[file]"-->
-<!--            :title="file"-->
-<!--        >-->
-<!--        </ImportComponent>-->
-<!--      </v-col>-->
+      <!--      <v-col-->
+      <!--          v-for="(file, titleIndex) in Object.keys(files)"-->
+      <!--          :key="titleIndex" cols="4"-->
+      <!--      >-->
+      <!--        <ImportComponent-->
+      <!--            v-model="files[file]"-->
+      <!--            :title="file"-->
+      <!--        >-->
+      <!--        </ImportComponent>-->
+      <!--      </v-col>-->
       <v-col>
         <ImportComponent
-          v-model="files.artistes"
-          title="Artistes"
+            v-model="files.artistes"
+            title="Artistes"
         ></ImportComponent>
 
         <ImportComponent
@@ -49,7 +49,8 @@
 
 <script>
 import ImportComponent from "@/components/ParsingData.vue";
-import axios from "axios";
+import {post} from "@/services/axios.service.js";
+
 export default {
   name: "ParserList",
   components: {ImportComponent},
@@ -73,17 +74,16 @@ export default {
   methods: {
     async submit() {
       if (this.allValid) {
-        try {
-          const response = await axios.post("http://localhost:3000/parser", this.files);
-          alert(response.data.message);
-        } catch (error) {
-          alert(error.response.data.message)
-          console.error(error);
-        }
+        post(`/parser`, this.files)
+            .then(() => {
+              alert("Importation réussie");
+            })
+            .catch(error => {
+              alert(error.response.data.message);
+            });
       }
-    },
+    }
   }
-
 }
 </script>
 

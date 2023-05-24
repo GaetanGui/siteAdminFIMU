@@ -270,8 +270,8 @@ export default {
         this.menuData[12].selected = true;
       }
     },
-
   },
+
   async created() {
     if (this.saison.length === 0) {
       await this.$store.dispatch('getSaison');
