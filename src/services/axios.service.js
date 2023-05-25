@@ -2,7 +2,7 @@ import axios from 'axios';
 import {authHeader} from "@/services/auth.service";
 
 const axiosService = axios.create({
-    baseURL: 'http://149.202.43.137:3000',
+    baseURL: 'http://localhost:3000',
     withCredentials: true,
 });
 axiosService.interceptors.request.use(

@@ -47,6 +47,7 @@
       <v-card-text>
         <p>{{ actu.contenu }}</p>
       </v-card-text>
+      <v-img :src="actu.lienImage"></v-img>
       <v-card-actions>
         <v-btn color="primary" @click="$router.push('/actualite/' + actu.id + '/edit')"><v-icon>mdi-pencil</v-icon></v-btn>
         <v-btn color="error" @click="deleteActualite(actu.id)"><v-icon>mdi-delete</v-icon></v-btn>

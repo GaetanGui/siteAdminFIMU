@@ -13,7 +13,7 @@
                 required
             ></v-text-field>
             <v-select
-                v-model="actualite.id_typeactu"
+                v-model="actualite.typeactuId"
                 :items="typeactuSelect"
                 label="Type d'actualité"
                 required
@@ -24,6 +24,23 @@
                 no-resize
                 required
             ></v-textarea>
+            <v-text-field
+                v-model="actualite.lienImage"
+                label="Photo de l'actualite'"
+                required
+            ></v-text-field>
+            <v-text-field
+                v-model="actualite.heureEnvoi"
+                type="time"
+                label="Heure d'envoi"
+                required
+            ></v-text-field>
+            <v-text-field
+                v-model="actualite.dateEnvoi"
+                type="date"
+                label="Date d'envoi"
+                required
+            ></v-text-field>
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="green darken-1" text @click="addActualite">Ajouter</v-btn>
@@ -45,11 +62,15 @@ export default {
     actualite: {
       titre: "",
       contenu: "",
-      id_typeactu: "",
+      lienImage: "",
+      dateEnvoi: null,
+      heureEnvoi: null,
+      typeactuId: "",
     },
   }),
   methods: {
     addActualite() {
+      console.log(this.actualite);
       post('actualite', this.actualite)
         .then(() => {
           this.$store.dispatch('getActualites');
@@ -74,6 +95,15 @@ export default {
   mounted() {
     if (this.$store.state.typeactu.length === 0) {
       this.$store.dispatch("getTypeactu");
+    }
+  },
+  watch: {
+    actualite: {
+      deep: true,
+      handler(newVal) {
+        // Faites quelque chose lorsque la variable actualite change
+        console.log('La variable actualite a été modifiée :', newVal);
+      }
     }
   },
 
