@@ -75,8 +75,8 @@
     <v-row class="table-center">
       <TableList
       :data="filtres"
-      :fields="['na', 'ns', 'hd', 'd', 'np']"
-      :titles="['Artiste', 'Scene', 'Heure de début', 'Durée', 'Affluence', 'Actions']"
+      :fields="['na', 'ns', 'hd', 'd']"
+      :titles="['Artiste', 'Scene', 'Heure de début', 'Durée', 'Actions']"
       :buttons="[
           {
             icon: 'mdi-pencil',
